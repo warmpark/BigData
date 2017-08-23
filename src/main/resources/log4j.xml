@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ABSOLUTE} [%5p] %m   (%F:%L)%n" />
+        </layout>
+    </appender>
+    
+    <appender name="consoleSQL" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[JDBC] %m%n" />
+        </layout>
+    </appender>
+    
+    <!-- TODO : add debug level -->
+
+    <!-- log SQL (pre-execution) plus exceptions caused by SQL -->
+	<logger name="jdbc.sqlonly" additivity="false">
+		<!--<level value="OFF" />
+		--><level value="OFF" />
+		<appender-ref ref="consoleSQL" />
+	</logger>
+
+	<!-- log SQL with timing information, post execution -->
+	<logger name="jdbc.sqltiming" additivity="false">
+		<level value="OFF" />
+		<appender-ref ref="consoleSQL" />
+	</logger>
+
+	<!-- only use the two logs below to trace ALL JDBC information,
+		NOTE:  This can be very voluminous!  -->
+
+	<!-- log all jdbc calls except ResultSet calls -->
+	<logger name="jdbc.audit" additivity="false">
+		<level value="ON" />
+		<appender-ref ref="consoleSQL" />
+	</logger>
+
+	<!-- log the jdbc ResultSet calls -->
+	<logger name="jdbc.resultset" additivity="false">
+		<level value="OFF" />
+		<appender-ref ref="consoleSQL" />
+	</logger>     
+	
+	<logger name="org.springframework" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="console" />
+	</logger>
+	    	
+	<logger name="org.apache" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="console" />
+	</logger>
+	
+    <logger name="com.t3q" additivity="false">
+        <level value="DEBUG"/>
+        <appender-ref ref="console"/>
+    </logger>
+	
+    <root>
+		<level value="DEBUG"/>
+		<appender-ref ref="console" />
+    </root>
+
+</log4j:configuration>
