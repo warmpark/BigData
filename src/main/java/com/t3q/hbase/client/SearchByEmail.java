@@ -5,13 +5,16 @@ import java.io.IOException;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.hbase.HBaseConfiguration;
-import org.apache.hadoop.hbase.client.HTable;
-import org.apache.hadoop.hbase.client.Scan;
-import org.apache.hadoop.hbase.client.ResultScanner;
+import org.apache.hadoop.hbase.TableName;
+import org.apache.hadoop.hbase.client.Connection;
+import org.apache.hadoop.hbase.client.ConnectionFactory;
 import org.apache.hadoop.hbase.client.Result;
+import org.apache.hadoop.hbase.client.ResultScanner;
+import org.apache.hadoop.hbase.client.Scan;
+import org.apache.hadoop.hbase.client.Table;
+import org.apache.hadoop.hbase.filter.CompareFilter.CompareOp;
 import org.apache.hadoop.hbase.filter.RegexStringComparator;
 import org.apache.hadoop.hbase.filter.SingleColumnValueFilter;
-import org.apache.hadoop.hbase.filter.CompareFilter.CompareOp;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.apache.hadoop.util.GenericOptionsParser;
 
@@ -29,9 +32,11 @@ public class SearchByEmail {
 			System.out.println("usage: [regular expression]");
 			System.exit(-1);
 		}
+		
+		Connection conn = ConnectionFactory.createConnection(config);
 
 		// Open the table
-		HTable table = new HTable(config, "people");
+		Table table = conn.getTable(TableName.valueOf("people"));
 
 		// Define the family and qualifiers to be used
 		byte[] contactFamily = Bytes.toBytes("contactinfo");
@@ -44,8 +49,7 @@ public class SearchByEmail {
 		RegexStringComparator emailFilter = new RegexStringComparator(otherArgs[0]);
 		// Attach the regex filter to a filter
 		// for the email column
-		SingleColumnValueFilter filter = new SingleColumnValueFilter(
-				contactFamily, emailQualifier, CompareOp.EQUAL, emailFilter);
+		SingleColumnValueFilter filter = new SingleColumnValueFilter(contactFamily, emailQualifier, CompareOp.EQUAL, emailFilter);
 
 		// Create a scan and set the filter
 		Scan scan = new Scan();

@@ -1,22 +1,35 @@
 package com.t3q.hadoop.mapreduce;
 
 import java.io.IOException;
+import java.util.StringTokenizer;
 
 import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-public class WordCountMapper extends Mapper<Object, Text, Text, IntWritable> {
+public class WordCountMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
-	private final IntWritable ONE = new IntWritable(1);
+	private final static IntWritable one = new IntWritable(1);
 	private Text word = new Text();
 
-	public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
+	@Override
+	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+		String line = value.toString();
 
-		String[] csv = value.toString().split(",");
-		for (String str : csv) {
-			word.set(str);
-			context.write(word, ONE);
+		StringTokenizer tokenizer = new StringTokenizer(line);
+		while (tokenizer.hasMoreTokens()) {
+			word.set(tokenizer.nextToken());
+			context.write(word, one);
 		}
 	}
+
+	public void run(Context context) throws IOException, InterruptedException {
+		setup(context);
+		while (context.nextKeyValue()) {
+			map(context.getCurrentKey(), context.getCurrentValue(), context);
+		}
+		cleanup(context);
+	}
+
 }

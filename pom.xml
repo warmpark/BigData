@@ -7,40 +7,48 @@
 	<name>BigData</name>
 	<description>BigData</description>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<hadoop.version>2.7.3</hadoop.version>
+		<log4j.version>2.8</log4j.version>
+		<maven-jar-plugin.version>2.5</maven-jar-plugin.version>
+		<maven-resources-plugin.version>2.6</maven-resources-plugin.version>
+		<maven-assembly-plugin.version>2.5</maven-assembly-plugin.version>
+	</properties>
 
 	<dependencies>
-	   <!-- log4j 모든 의존성을 exclude하고 아래와 같이 등록...-->
-	   <dependency>
-	        <groupId>org.apache.logging.log4j</groupId>
-	        <artifactId>log4j-core</artifactId>
-	        <version>2.8</version>
-	    </dependency>
-	    <dependency>
-	        <groupId>org.apache.logging.log4j</groupId>
-	        <artifactId>log4j-1.2-api</artifactId>
-	        <version>2.8</version>
-	    </dependency>
-	    <dependency>
-	        <groupId>org.apache.logging.log4j</groupId>
-	        <artifactId>log4j-jcl</artifactId>
-	        <version>2.8</version>
-	    </dependency>
-	    <dependency>
-	        <groupId>org.apache.logging.log4j</groupId>
-	        <artifactId>log4j-slf4j-impl</artifactId>
-	        <version>2.8</version>
-	    </dependency>
-    
+		<!-- log4j 모든 의존성을 exclude하고 아래와 같이 등록... -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.8</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-1.2-api</artifactId>
+			<version>2.8</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-jcl</artifactId>
+			<version>2.8</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>2.8</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.apache.phoenix</groupId>
 			<artifactId>phoenix-core</artifactId>
 			<version>4.11.0-HBase-1.1</version>
 		</dependency>
-            	
+
 		<dependency>
 			<groupId>org.apache.hadoop</groupId>
 			<artifactId>hadoop-client</artifactId>
-			<version>2.7.3</version>
+			<version>${hadoop.version}</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>slf4j-log4j12</artifactId>
@@ -59,13 +67,8 @@
 			<version>2.2.0</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-		<!--
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.39</version>
-		</dependency>
-		-->
+		<!-- <dependency> <groupId>mysql</groupId> <artifactId>mysql-connector-java</artifactId> 
+			<version>5.1.39</version> </dependency> -->
 		<!-- https://mvnrepository.com/artifact/org.apache.hbase/hbase -->
 		<dependency>
 			<groupId>org.apache.hbase</groupId>
@@ -153,7 +156,7 @@
 			<artifactId>curator-framework</artifactId>
 			<version>2.11.0</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/org.apache.storm/storm-core -->
 		<dependency>
 			<groupId>org.apache.storm</groupId>
@@ -161,20 +164,20 @@
 			<version>1.1.0</version>
 			<scope>compile</scope>
 
-		  <exclusions>
-		        <exclusion>
-		            <groupId>org.apache.zookeeper</groupId>
-		            <artifactId>zookeeper</artifactId>
-		        </exclusion>
-		        <exclusion>
-		            <groupId>org.slf4j</groupId>
-		            <artifactId>slf4j-log4j12</artifactId>
-		        </exclusion>
-		        <!--<exclusion>-->
-		            <!--<groupId>log4j</groupId>-->
-		            <!--<artifactId>log4j</artifactId>-->
-		        <!--</exclusion>-->
-		    </exclusions>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.zookeeper</groupId>
+					<artifactId>zookeeper</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+				<!--<exclusion> -->
+				<!--<groupId>log4j</groupId> -->
+				<!--<artifactId>log4j</artifactId> -->
+				<!--</exclusion> -->
+			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -183,18 +186,18 @@
 			<version>1.1.0</version>
 			<scope>provided</scope>
 			<exclusions>
- 				<exclusion>
+				<exclusion>
 					<artifactId>log4j-over-slf4j</artifactId>
 					<groupId>org.slf4j</groupId>
 				</exclusion>
- 				<exclusion>
+				<exclusion>
 					<artifactId>log4j-slf4j-impl</artifactId>
 					<groupId>org.apache.logging.log4j</groupId>
 				</exclusion>
- 				<exclusion>
- 					<artifactId>slf4j-api</artifactId>
- 					<groupId>org.slf4j</groupId>
- 				</exclusion>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
 			</exclusions>
 
 		</dependency>
@@ -210,8 +213,13 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+ 				<version>${maven-jar-plugin.version}</version>
+			</plugin>
+			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.5</version>
+				<version>${maven-assembly-plugin.version}</version>
 				<configuration>
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
@@ -232,6 +240,15 @@
 					</execution>
 				</executions>
 			</plugin>
+
+		     <plugin>
+		        <artifactId>maven-resources-plugin</artifactId>
+		        <version>${maven-resources-plugin.version}</version>
+				<configuration>
+		          <encoding>${project.build.sourceEncoding}</encoding>
+		        </configuration>		        
+	      	</plugin>
+			
 		</plugins>
 	</build>
 
