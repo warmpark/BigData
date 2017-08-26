@@ -1,4 +1,4 @@
-package com.t3q.phoenix;
+package com.t3q.hbase.phoenix;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,6 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
+/**
+ * Phoenix 문법 : https://phoenix.apache.org/language/
+ * 
+ * @author warmpark
+ *
+ */
 public class PhoenixExample {
 
 	public static void main(String[] args) {

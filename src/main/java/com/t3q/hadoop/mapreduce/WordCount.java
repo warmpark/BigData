@@ -1,8 +1,6 @@
 package com.t3q.hadoop.mapreduce;
 
-import java.io.IOException;
-
-import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
@@ -12,47 +10,61 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+import org.apache.hadoop.util.Tool;
+import org.apache.hadoop.util.ToolRunner;
 
-public class WordCount {
+/**
+ * $ hadoop jar BigData-0.0.1-SNAPSHOT.jar com.t3q.hadoop.mapreduce.Wordcount
+ * /user/hdfs/wordcount/input /user/hdfs/wordcount/output
+ * 
+ * @author warmpark
+ *
+ */
+public class WordCount extends Configured implements Tool {
+	public int run(String[] args) throws Exception {
+		if (args.length != 2) {
+			System.out.println("Usage: [input] [output]");
+			System.exit(-1);
+		}
 
-	public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
+		Job job = Job.getInstance(getConf());
+		job.setJobName("wordcount");
+		job.setJarByClass(WordCount.class);
 
-		Path inputPath = new Path(args[0]);
-		Path outputDir = new Path(args[1]);
-
-		// Create configuration
-		Configuration conf = new Configuration(true);
-
-		// Create job
-		Job job = new Job(conf, "WordCount");
-		job.setJarByClass(WordCountMapper.class);
-
-		// Setup MapReduce
-		job.setMapperClass(WordCountMapper.class);
-		job.setReducerClass(WordCountReducer.class);
-		job.setNumReduceTasks(1);
-
-		// Specify key / value
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(IntWritable.class);
 
-		// Input
-		FileInputFormat.addInputPath(job, inputPath);
-		job.setInputFormatClass(TextInputFormat.class);
+		job.setMapperClass(WordCountMapper.class);
+		job.setCombinerClass(WordCountReducer.class);
+		job.setReducerClass(WordCountReducer.class);
 
-		// Output
-		FileOutputFormat.setOutputPath(job, outputDir);
+		job.setInputFormatClass(TextInputFormat.class);
 		job.setOutputFormatClass(TextOutputFormat.class);
 
-		// Delete output if exists
-		FileSystem hdfs = FileSystem.get(conf);
-		if (hdfs.exists(outputDir))
-			hdfs.delete(outputDir, true);
+		Path inputFilePath = new Path(args[0]);
+		Path outputFilePath = new Path(args[1]);
 
-		// Execute job
-		int code = job.waitForCompletion(true) ? 0 : 1;
-		System.exit(code);
+		/* This line is to accept the input recursively */
+		FileInputFormat.setInputDirRecursive(job, true);
 
+		FileInputFormat.addInputPath(job, inputFilePath);
+		FileOutputFormat.setOutputPath(job, outputFilePath);
+
+		/*
+		 * Delete output filepath if already exists
+		 */
+		FileSystem fs = FileSystem.newInstance(getConf());
+
+		if (fs.exists(outputFilePath)) {
+			fs.delete(outputFilePath, true);
+		}
+
+		return job.waitForCompletion(true) ? 0 : 1;
 	}
 
+	public static void main(String[] args) throws Exception {
+		WordCount wordcountDriver = new WordCount();
+		int res = ToolRunner.run(wordcountDriver, args);
+		System.exit(res);
+	}
 }
