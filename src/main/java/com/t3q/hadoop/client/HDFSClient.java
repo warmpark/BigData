@@ -36,16 +36,16 @@ public class HDFSClient {
 			FileSystem hdfs = null;
 			Configuration config = new Configuration();
 
-			//File hdfsSiteXml = new HDFSClient().getFile("conf/hadoop/hdfs-site.xml");
-			//config.addResource(new Path(hdfsSiteXml.getPath()));
-			config.addResource(new Path("/JavaOneShot/IDE/64/workspace/BigData/src/main/resources/conf/hadoop/hdfs-site.xml"));
+			File hdfsSiteXml = new HDFSClient().getFile("conf/hadoop/hdfs-site.xml");
+			config.addResource(new Path(hdfsSiteXml.getPath()));
+			//config.addResource(new Path("/JavaOneShot/IDE/64/workspace/BigData/src/main/resources/conf/hadoop/hdfs-site.xml"));
 
 			
 			//CASE #1 core-site.xml fs.defaultFS = hdfs://big-cluster, 8020 = namenode port
-			hdfs = FileSystem.get(new URI("hdfs://big-cluster:8020"), config, "hdfs");
+			//hdfs = FileSystem.get(new URI("hdfs://big-cluster:8020"), config, "hdfs");
 			
 			//CASE #2 -- local
-			//hdfs = FileSystem.get(FileSystem.getDefaultUri(config), config ,"hdfs");
+			hdfs = FileSystem.get(FileSystem.getDefaultUri(config), config ,"hdfs");
 
 			System.out.println("Home Path : " + hdfs.getHomeDirectory());
 			System.out.println("Work Path : " + hdfs.getWorkingDirectory());
@@ -77,8 +77,6 @@ public class HDFSClient {
 		
 			//B.  읽기
 			new HDFSClient().readFromHDFS(config, hdfs,toHdfsPath );
-
-			
 			hdfs.close();
 			
 
@@ -124,8 +122,6 @@ public class HDFSClient {
 	 */
 	public void readFromHDFS(Configuration config, FileSystem hdfs, Path path) {
 		try {
-			
-
 //			Configuration config = new Configuration();
 //			config.addResource(new Path("/JavaOneShot/IDE/64/workspace/BigData/src/main/resources/conf/hadoop/hdfs-site.xml"));
 //			FileSystem hdfs = FileSystem.get(new URI("hdfs://big-cluster:8020"), config, "hdfs");

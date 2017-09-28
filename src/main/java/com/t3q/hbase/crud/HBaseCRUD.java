@@ -1,8 +1,12 @@
 package com.t3q.hbase.crud;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.util.Scanner;
 
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.HColumnDescriptor;
 import org.apache.hadoop.hbase.HTableDescriptor;
@@ -19,8 +23,12 @@ import org.apache.hadoop.hbase.client.Scan;
 import org.apache.hadoop.hbase.client.Table;
 import org.apache.hadoop.hbase.util.Bytes;
 
+import com.t3q.hadoop.client.HDFSClient;
+
 /**
  * 참고 : https://www.tutorialspoint.com/hbase/
+ * > hbase shell
+ * table list > list
  * 
  * @author warmpark
  * 
@@ -34,7 +42,12 @@ public class HBaseCRUD {
 		conf.set("hbase.zookeeper.quorum", "big01,big02,big03");
 		conf.set("hbase.zookeeper.property.clientPort", "2181");
 
+		
+
 		// configuration -#2. hbase-site.xml로 부터.
+		//File hdfsSiteXml = getFile("conf/hbase/hbase-site.xml");
+		//conf.addResource(new Path(hdfsSiteXml.getPath()));
+
 		// conf.addResource(new
 		// Path("/JavaOneShot/IDE/64/workspace/BigData/src/main/resources/conf/hbase/hbase-site.xml"));
 	}
@@ -48,9 +61,9 @@ public class HBaseCRUD {
 		}
 		
 		try {
-			crud.putData();
+			//crud.putData();
 			crud.readData();
-			crud.scanData();
+			//crud.scanData();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
@@ -90,15 +103,16 @@ public class HBaseCRUD {
 
 	/**
 	 * insert or update
-	 * https://www.tutorialspoint.com/hbase/hbase_create_data.htm put ’
-	 * <table name>
-	 * ’,’row1’,’<colfamily:colname>’,’<value>’ hbase(main):005:0> put
-	 * 'emp','1','personal:name','raju' 0 row(s) in 0.6600 seconds
-	 * hbase(main):006:0> put 'emp','1','personal:city','hyderabad' 0 row(s) in
-	 * 0.0410 seconds hbase(main):007:0> put
-	 * 'emp','1','professional:designation','manager' 0 row(s) in 0.0240 seconds
-	 * hbase(main):007:0> put 'emp','1','professional:salary','50000' 0 row(s)
-	 * in 0.0240 seconds
+	 * https://www.tutorialspoint.com/hbase/hbase_create_data.htm 
+	 * put ’<table name>’,’row1’,’<colfamily:colname>’,’<value>’ 
+	 * 
+	 * hbase(main):005:0> put 'emp','1','personal:name','raju' 
+	 * 
+	 * hbase(main):006:0> put 'emp','1','personal:city','hyderabad' 
+	
+	 * 0.0410 seconds hbase(main):007:0> put 'emp','1','professional:designation','manager' 
+	 * 
+	 * hbase(main):007:0> put 'emp','1','professional:salary','50000'
 	 * 
 	 * 
 	 * https://www.tutorialspoint.com/hbase/hbase_update_data.htm
@@ -137,7 +151,7 @@ public class HBaseCRUD {
 	 * hbase(main):012:0> get 'emp', 'row1'
 	 * 
 	 * hbase> get 'table name', ‘rowid’, {COLUMN => ‘column family:column name ’}
-	 * hbase(main):015:0> get 'emp', 'row1', {COLUMN ⇒ 'personal:name'}
+	 * hbase(main):015:0> get 'emp', 'row1', {COLUMN => 'personal:name'}
 	 * 
 	 * @throws IOException
 	 */
@@ -248,4 +262,31 @@ public class HBaseCRUD {
 		System.out.println("Table deleted");
 	}
 
+	
+	private  File getFile(String fileInClasspath) {
+
+		StringBuilder result = new StringBuilder("");
+
+		// Get file from resources folder
+		ClassLoader classLoader = getClass().getClassLoader();
+		URL uri = classLoader.getResource(fileInClasspath);
+		File file = new File(uri.getFile());
+
+		try {
+			Scanner scanner = new Scanner(file);
+			while (scanner.hasNextLine()) {
+				String line = scanner.nextLine();
+				result.append(line).append("\n");
+			}
+
+			scanner.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println(result.toString());
+		return file;
+
+	}
 }

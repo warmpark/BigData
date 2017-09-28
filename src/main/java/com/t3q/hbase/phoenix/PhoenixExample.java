@@ -10,6 +10,7 @@ import java.sql.Statement;
 
 /**
  * Phoenix 문법 : https://phoenix.apache.org/language/
+ * table list > !tables
  * 
  * @author warmpark
  *

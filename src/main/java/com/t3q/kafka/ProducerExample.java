@@ -1,10 +1,13 @@
 package com.t3q.kafka;
 
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.common.Node;
+import org.apache.kafka.common.PartitionInfo;
 
 public class ProducerExample {
 
@@ -26,9 +29,17 @@ public class ProducerExample {
 			
 		
 		Producer<String, String> producer  = new KafkaProducer<String,String>(props);	
+		List<PartitionInfo> plist = producer.partitionsFor("test");
+		
+		for(int i=0; i<plist.size(); i++) {
+			PartitionInfo pinfo = plist.get(i);
+			Node node = pinfo.leader();
+			System.out.println(node);
+		}
+		
 
-		for(int i=0;  i<100; i++){
-			ProducerRecord<String, String> message = new ProducerRecord<String, String>("test", i+"",i+" Hello, World!");
+		for(int i=0;  i<10000; i++){
+			ProducerRecord<String, String> message = new ProducerRecord<String, String>("test", i+"",i+" @@2@@@@@@@@@@@@  Hello, World!");
 			Thread.sleep(100);
 			producer.send(message);
 		}

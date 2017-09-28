@@ -31,8 +31,8 @@ public class HelloTopology {
 	
 	
 	public static void main(String args[]) {
-		new HelloTopology().deleteTopology("HelloTopology");
-		//new HelloTopology().deployTopology("HelloTopology");
+		//new HelloTopology().deleteTopology("HelloTopology");
+		new HelloTopology().deployTopology("HelloTopology_warmpark");
 	}
 
 	/**

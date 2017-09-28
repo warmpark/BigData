@@ -18,11 +18,13 @@ public class HelloSpout extends BaseRichSpout {
           }
          
           public void nextTuple(){
-                 this.collector.emit(new Values("hello world"));
+                 this.collector.emit(new Values("========hello world"));
+                 System.out.println("#############################");
           }
          
           public void declareOutputFields(OutputFieldsDeclarer declarer){
                  declarer.declare(new Fields("say"));
+                 System.out.println("!!!!!!!!!!!!!!!!!!!!");
           }
          
 }

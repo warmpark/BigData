@@ -1,0 +1,1149 @@
+<?xml version="1.0" ?>
+<template encoding-version="1.1">
+  <description>API에서 json형태의 파일을 HDFS와 Hbase에 저장</description>
+  <groupId>15c0f51f-8ba2-35f8-938a-de8ab56a6aab</groupId>
+  <name>JSON to HDFS and Hbase</name>
+  <snippet>
+    <connections>
+      <id>84153a49-d35e-33ed-0000-000000000000</id>
+      <parentGroupId>a43fc589-b566-34bf-0000-000000000000</parentGroupId>
+      <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+      <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+      <destination>
+        <groupId>a43fc589-b566-34bf-0000-000000000000</groupId>
+        <id>3446ca32-c85d-3bd1-0000-000000000000</id>
+        <type>PROCESSOR</type>
+      </destination>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <labelIndex>1</labelIndex>
+      <name></name>
+      <selectedRelationships>Response</selectedRelationships>
+      <source>
+        <groupId>a43fc589-b566-34bf-0000-000000000000</groupId>
+        <id>5bde930f-d5c1-3673-0000-000000000000</id>
+        <type>PROCESSOR</type>
+      </source>
+      <zIndex>0</zIndex>
+    </connections>
+    <connections>
+      <id>cf2a90c4-679c-374b-0000-000000000000</id>
+      <parentGroupId>a43fc589-b566-34bf-0000-000000000000</parentGroupId>
+      <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+      <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+      <destination>
+        <groupId>a43fc589-b566-34bf-0000-000000000000</groupId>
+        <id>c55b9adf-b3d4-37d5-0000-000000000000</id>
+        <type>PROCESSOR</type>
+      </destination>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <labelIndex>1</labelIndex>
+      <name></name>
+      <selectedRelationships>matched</selectedRelationships>
+      <source>
+        <groupId>a43fc589-b566-34bf-0000-000000000000</groupId>
+        <id>3446ca32-c85d-3bd1-0000-000000000000</id>
+        <type>PROCESSOR</type>
+      </source>
+      <zIndex>0</zIndex>
+    </connections>
+    <connections>
+      <id>dbefe4d1-2232-378e-0000-000000000000</id>
+      <parentGroupId>a43fc589-b566-34bf-0000-000000000000</parentGroupId>
+      <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+      <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+      <destination>
+        <groupId>a43fc589-b566-34bf-0000-000000000000</groupId>
+        <id>5bde930f-d5c1-3673-0000-000000000000</id>
+        <type>PROCESSOR</type>
+      </destination>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <labelIndex>1</labelIndex>
+      <name></name>
+      <selectedRelationships>success</selectedRelationships>
+      <source>
+        <groupId>a43fc589-b566-34bf-0000-000000000000</groupId>
+        <id>d54eb984-6978-30b6-0000-000000000000</id>
+        <type>PROCESSOR</type>
+      </source>
+      <zIndex>0</zIndex>
+    </connections>
+    <connections>
+      <id>1cda2b0f-92fd-347f-0000-000000000000</id>
+      <parentGroupId>a43fc589-b566-34bf-0000-000000000000</parentGroupId>
+      <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+      <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+      <bends>
+        <x>1144.2023887634277</x>
+        <y>40.0</y>
+      </bends>
+      <bends>
+        <x>1144.2023887634277</x>
+        <y>90.0</y>
+      </bends>
+      <destination>
+        <groupId>a43fc589-b566-34bf-0000-000000000000</groupId>
+        <id>5bde930f-d5c1-3673-0000-000000000000</id>
+        <type>PROCESSOR</type>
+      </destination>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <labelIndex>1</labelIndex>
+      <name></name>
+      <selectedRelationships>Retry</selectedRelationships>
+      <source>
+        <groupId>a43fc589-b566-34bf-0000-000000000000</groupId>
+        <id>5bde930f-d5c1-3673-0000-000000000000</id>
+        <type>PROCESSOR</type>
+      </source>
+      <zIndex>0</zIndex>
+    </connections>
+    <connections>
+      <id>292631ce-6b5a-3c0f-0000-000000000000</id>
+      <parentGroupId>a43fc589-b566-34bf-0000-000000000000</parentGroupId>
+      <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+      <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+      <destination>
+        <groupId>a43fc589-b566-34bf-0000-000000000000</groupId>
+        <id>8d7d0f43-4e52-3820-0000-000000000000</id>
+        <type>PROCESSOR</type>
+      </destination>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <labelIndex>1</labelIndex>
+      <name></name>
+      <selectedRelationships>matched</selectedRelationships>
+      <source>
+        <groupId>a43fc589-b566-34bf-0000-000000000000</groupId>
+        <id>3446ca32-c85d-3bd1-0000-000000000000</id>
+        <type>PROCESSOR</type>
+      </source>
+      <zIndex>0</zIndex>
+    </connections>
+    <connections>
+      <id>7b85e5d5-cf1c-31b2-0000-000000000000</id>
+      <parentGroupId>a43fc589-b566-34bf-0000-000000000000</parentGroupId>
+      <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+      <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+      <destination>
+        <groupId>a43fc589-b566-34bf-0000-000000000000</groupId>
+        <id>ba5be0c5-64d8-363b-0000-000000000000</id>
+        <type>PROCESSOR</type>
+      </destination>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <labelIndex>1</labelIndex>
+      <name></name>
+      <selectedRelationships>success</selectedRelationships>
+      <source>
+        <groupId>a43fc589-b566-34bf-0000-000000000000</groupId>
+        <id>8d7d0f43-4e52-3820-0000-000000000000</id>
+        <type>PROCESSOR</type>
+      </source>
+      <zIndex>0</zIndex>
+    </connections>
+    <controllerServices>
+      <id>0fcd7470-4258-306c-0000-000000000000</id>
+      <parentGroupId>a43fc589-b566-34bf-0000-000000000000</parentGroupId>
+      <bundle>
+        <artifact>nifi-hbase_1_1_2-client-service-nar</artifact>
+        <group>org.apache.nifi</group>
+        <version>1.3.0</version>
+      </bundle>
+      <comments></comments>
+      <descriptors>
+        <entry>
+          <key>Hadoop Configuration Files</key>
+          <value>
+            <name>Hadoop Configuration Files</name>
+          </value>
+        </entry>
+        <entry>
+          <key>Kerberos Principal</key>
+          <value>
+            <name>Kerberos Principal</name>
+          </value>
+        </entry>
+        <entry>
+          <key>Kerberos Keytab</key>
+          <value>
+            <name>Kerberos Keytab</name>
+          </value>
+        </entry>
+        <entry>
+          <key>ZooKeeper Quorum</key>
+          <value>
+            <name>ZooKeeper Quorum</name>
+          </value>
+        </entry>
+        <entry>
+          <key>ZooKeeper Client Port</key>
+          <value>
+            <name>ZooKeeper Client Port</name>
+          </value>
+        </entry>
+        <entry>
+          <key>ZooKeeper ZNode Parent</key>
+          <value>
+            <name>ZooKeeper ZNode Parent</name>
+          </value>
+        </entry>
+        <entry>
+          <key>HBase Client Retries</key>
+          <value>
+            <name>HBase Client Retries</name>
+          </value>
+        </entry>
+        <entry>
+          <key>Phoenix Client JAR Location</key>
+          <value>
+            <name>Phoenix Client JAR Location</name>
+          </value>
+        </entry>
+      </descriptors>
+      <name>HBase_1_1_2_ClientService</name>
+      <persistsState>false</persistsState>
+      <properties>
+        <entry>
+          <key>Hadoop Configuration Files</key>
+          <value>/etc/hadoop/core-site.xml,/etc/hbase/hbase-site.xml</value>
+        </entry>
+        <entry>
+          <key>Kerberos Principal</key>
+        </entry>
+        <entry>
+          <key>Kerberos Keytab</key>
+        </entry>
+        <entry>
+          <key>ZooKeeper Quorum</key>
+        </entry>
+        <entry>
+          <key>ZooKeeper Client Port</key>
+        </entry>
+        <entry>
+          <key>ZooKeeper ZNode Parent</key>
+        </entry>
+        <entry>
+          <key>HBase Client Retries</key>
+        </entry>
+        <entry>
+          <key>Phoenix Client JAR Location</key>
+        </entry>
+      </properties>
+      <state>ENABLED</state>
+      <type>org.apache.nifi.hbase.HBase_1_1_2_ClientService</type>
+    </controllerServices>
+    <processors>
+      <id>8d7d0f43-4e52-3820-0000-000000000000</id>
+      <parentGroupId>a43fc589-b566-34bf-0000-000000000000</parentGroupId>
+      <position>
+        <x>141.52639205913465</x>
+        <y>282.1897140619244</y>
+      </position>
+      <bundle>
+        <artifact>nifi-update-attribute-nar</artifact>
+        <group>org.apache.nifi</group>
+        <version>1.3.0</version>
+      </bundle>
+      <config>
+        <annotationData>&lt;criteria&gt;
+    &lt;flowFilePolicy&gt;USE_ORIGINAL&lt;/flowFilePolicy&gt;
+&lt;/criteria&gt;</annotationData>
+        <bulletinLevel>WARN</bulletinLevel>
+        <comments>파일의 이름을 원하는 이름으로 변경해주는 프로세서
+
+
+
+동적 Property이기에 직접 추가해야함
+filename  :  Hwan_${now():format("yyMMdd_HHmmss_SSS")}.json
+예제에선 원하는 이름+현재시간+확장자
+
+주의사항 : 콜론기호(:)를 사용하면 오류발생
+
+</comments>
+        <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+        <descriptors>
+          <entry>
+            <key>Delete Attributes Expression</key>
+            <value>
+              <name>Delete Attributes Expression</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Store State</key>
+            <value>
+              <name>Store State</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Stateful Variables Initial Value</key>
+            <value>
+              <name>Stateful Variables Initial Value</name>
+            </value>
+          </entry>
+          <entry>
+            <key>filename</key>
+            <value>
+              <name>filename</name>
+            </value>
+          </entry>
+        </descriptors>
+        <executionNode>ALL</executionNode>
+        <lossTolerant>false</lossTolerant>
+        <penaltyDuration>30 sec</penaltyDuration>
+        <properties>
+          <entry>
+            <key>Delete Attributes Expression</key>
+          </entry>
+          <entry>
+            <key>Store State</key>
+            <value>Do not store state</value>
+          </entry>
+          <entry>
+            <key>Stateful Variables Initial Value</key>
+            <value></value>
+          </entry>
+          <entry>
+            <key>filename</key>
+            <value>Hwan_${now():format("yyMMdd_HHmmss_SSS")}.json</value>
+          </entry>
+        </properties>
+        <runDurationMillis>0</runDurationMillis>
+        <schedulingPeriod>0 sec</schedulingPeriod>
+        <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+        <yieldDuration>1 sec</yieldDuration>
+      </config>
+      <name>UpdateAttribute</name>
+      <relationships>
+        <autoTerminate>false</autoTerminate>
+        <name>success</name>
+      </relationships>
+      <style></style>
+      <type>org.apache.nifi.processors.attributes.UpdateAttribute</type>
+    </processors>
+    <processors>
+      <id>ba5be0c5-64d8-363b-0000-000000000000</id>
+      <parentGroupId>a43fc589-b566-34bf-0000-000000000000</parentGroupId>
+      <position>
+        <x>613.17682091537</x>
+        <y>554.4027801587597</y>
+      </position>
+      <bundle>
+        <artifact>nifi-hadoop-nar</artifact>
+        <group>org.apache.nifi</group>
+        <version>1.3.0</version>
+      </bundle>
+      <config>
+        <bulletinLevel>WARN</bulletinLevel>
+        <comments>json파일을 HDFS에 저장하는 프로세서
+
+설정한 경로에 생성됨(Directory  :  /data/Hwan)
+
+
+
+Remote 설정
+
+Remote Owner  :  root
+Remote Group  :  hadoop
+
+
+
+
+Hadoop Configuration Resources 설정 필요 
+
+/etc/hadoop/core-site.xml,/etc/hadoop/hdfs-site.xml</comments>
+        <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+        <descriptors>
+          <entry>
+            <key>Hadoop Configuration Resources</key>
+            <value>
+              <name>Hadoop Configuration Resources</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Kerberos Principal</key>
+            <value>
+              <name>Kerberos Principal</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Kerberos Keytab</key>
+            <value>
+              <name>Kerberos Keytab</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Kerberos Relogin Period</key>
+            <value>
+              <name>Kerberos Relogin Period</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Additional Classpath Resources</key>
+            <value>
+              <name>Additional Classpath Resources</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Directory</key>
+            <value>
+              <name>Directory</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Conflict Resolution Strategy</key>
+            <value>
+              <name>Conflict Resolution Strategy</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Block Size</key>
+            <value>
+              <name>Block Size</name>
+            </value>
+          </entry>
+          <entry>
+            <key>IO Buffer Size</key>
+            <value>
+              <name>IO Buffer Size</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Replication</key>
+            <value>
+              <name>Replication</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Permissions umask</key>
+            <value>
+              <name>Permissions umask</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Remote Owner</key>
+            <value>
+              <name>Remote Owner</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Remote Group</key>
+            <value>
+              <name>Remote Group</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Compression codec</key>
+            <value>
+              <name>Compression codec</name>
+            </value>
+          </entry>
+        </descriptors>
+        <executionNode>ALL</executionNode>
+        <lossTolerant>false</lossTolerant>
+        <penaltyDuration>30 sec</penaltyDuration>
+        <properties>
+          <entry>
+            <key>Hadoop Configuration Resources</key>
+            <value>/etc/hadoop/core-site.xml,/etc/hadoop/hdfs-site.xml</value>
+          </entry>
+          <entry>
+            <key>Kerberos Principal</key>
+          </entry>
+          <entry>
+            <key>Kerberos Keytab</key>
+          </entry>
+          <entry>
+            <key>Kerberos Relogin Period</key>
+            <value>4 hours</value>
+          </entry>
+          <entry>
+            <key>Additional Classpath Resources</key>
+          </entry>
+          <entry>
+            <key>Directory</key>
+            <value>/data/Hwan</value>
+          </entry>
+          <entry>
+            <key>Conflict Resolution Strategy</key>
+            <value>fail</value>
+          </entry>
+          <entry>
+            <key>Block Size</key>
+          </entry>
+          <entry>
+            <key>IO Buffer Size</key>
+          </entry>
+          <entry>
+            <key>Replication</key>
+          </entry>
+          <entry>
+            <key>Permissions umask</key>
+          </entry>
+          <entry>
+            <key>Remote Owner</key>
+            <value>root</value>
+          </entry>
+          <entry>
+            <key>Remote Group</key>
+            <value>hadoop</value>
+          </entry>
+          <entry>
+            <key>Compression codec</key>
+            <value>NONE</value>
+          </entry>
+        </properties>
+        <runDurationMillis>0</runDurationMillis>
+        <schedulingPeriod>0 sec</schedulingPeriod>
+        <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+        <yieldDuration>30 sec</yieldDuration>
+      </config>
+      <name>PutHDFS</name>
+      <relationships>
+        <autoTerminate>true</autoTerminate>
+        <name>failure</name>
+      </relationships>
+      <relationships>
+        <autoTerminate>true</autoTerminate>
+        <name>success</name>
+      </relationships>
+      <style></style>
+      <type>org.apache.nifi.processors.hadoop.PutHDFS</type>
+    </processors>
+    <processors>
+      <id>c55b9adf-b3d4-37d5-0000-000000000000</id>
+      <parentGroupId>a43fc589-b566-34bf-0000-000000000000</parentGroupId>
+      <position>
+        <x>999.4826088712684</x>
+        <y>403.01931153506894</y>
+      </position>
+      <bundle>
+        <artifact>nifi-hbase-nar</artifact>
+        <group>org.apache.nifi</group>
+        <version>1.3.0</version>
+      </bundle>
+      <config>
+        <bulletinLevel>WARN</bulletinLevel>
+        <comments>json파일을 HBase안 이미 생성된 Table에 저장하는 프로세서
+
+
+Table Name : Hwan 
+
+Column Family : properties
+
+row키는 json파일안에있는 시간데이터로 설정 (json document : created)
+
+
+
+
+
+
+HBase Client Service 설정 필요 
+
+HBase Client Service를 새로 만들어 아래의 설정을 해주어야함
+
+Hadoop Configuration Files  :  /etc/hadoop/core-site.xml,/etc/hbase/hbase-site.xml</comments>
+        <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+        <descriptors>
+          <entry>
+            <key>HBase Client Service</key>
+            <value>
+              <identifiesControllerService>org.apache.nifi.hbase.HBaseClientService</identifiesControllerService>
+              <name>HBase Client Service</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Table Name</key>
+            <value>
+              <name>Table Name</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Row Identifier</key>
+            <value>
+              <name>Row Identifier</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Row Identifier Field Name</key>
+            <value>
+              <name>Row Identifier Field Name</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Row Identifier Encoding Strategy</key>
+            <value>
+              <name>Row Identifier Encoding Strategy</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Column Family</key>
+            <value>
+              <name>Column Family</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Batch Size</key>
+            <value>
+              <name>Batch Size</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Complex Field Strategy</key>
+            <value>
+              <name>Complex Field Strategy</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Field Encoding Strategy</key>
+            <value>
+              <name>Field Encoding Strategy</name>
+            </value>
+          </entry>
+        </descriptors>
+        <executionNode>ALL</executionNode>
+        <lossTolerant>false</lossTolerant>
+        <penaltyDuration>30 sec</penaltyDuration>
+        <properties>
+          <entry>
+            <key>HBase Client Service</key>
+            <value>0fcd7470-4258-306c-0000-000000000000</value>
+          </entry>
+          <entry>
+            <key>Table Name</key>
+            <value>Hwan</value>
+          </entry>
+          <entry>
+            <key>Row Identifier</key>
+          </entry>
+          <entry>
+            <key>Row Identifier Field Name</key>
+            <value>created</value>
+          </entry>
+          <entry>
+            <key>Row Identifier Encoding Strategy</key>
+            <value>String</value>
+          </entry>
+          <entry>
+            <key>Column Family</key>
+            <value>properties</value>
+          </entry>
+          <entry>
+            <key>Batch Size</key>
+            <value>1000</value>
+          </entry>
+          <entry>
+            <key>Complex Field Strategy</key>
+            <value>Text</value>
+          </entry>
+          <entry>
+            <key>Field Encoding Strategy</key>
+            <value>String</value>
+          </entry>
+        </properties>
+        <runDurationMillis>0</runDurationMillis>
+        <schedulingPeriod>0 sec</schedulingPeriod>
+        <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+        <yieldDuration>1 sec</yieldDuration>
+      </config>
+      <name>PutHBaseJSON</name>
+      <relationships>
+        <autoTerminate>true</autoTerminate>
+        <name>failure</name>
+      </relationships>
+      <relationships>
+        <autoTerminate>true</autoTerminate>
+        <name>success</name>
+      </relationships>
+      <style></style>
+      <type>org.apache.nifi.hbase.PutHBaseJSON</type>
+    </processors>
+    <processors>
+      <id>d54eb984-6978-30b6-0000-000000000000</id>
+      <parentGroupId>a43fc589-b566-34bf-0000-000000000000</parentGroupId>
+      <position>
+        <x>0.0</x>
+        <y>8.650367736816406</y>
+      </position>
+      <bundle>
+        <artifact>nifi-standard-nar</artifact>
+        <group>org.apache.nifi</group>
+        <version>1.3.0</version>
+      </bundle>
+      <config>
+        <bulletinLevel>WARN</bulletinLevel>
+        <comments>불러올 정보를 저장할 빈 파일을 생성하는 프로세서</comments>
+        <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+        <descriptors>
+          <entry>
+            <key>File Size</key>
+            <value>
+              <name>File Size</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Batch Size</key>
+            <value>
+              <name>Batch Size</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Data Format</key>
+            <value>
+              <name>Data Format</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Unique FlowFiles</key>
+            <value>
+              <name>Unique FlowFiles</name>
+            </value>
+          </entry>
+          <entry>
+            <key>generate-ff-custom-text</key>
+            <value>
+              <name>generate-ff-custom-text</name>
+            </value>
+          </entry>
+        </descriptors>
+        <executionNode>PRIMARY</executionNode>
+        <lossTolerant>false</lossTolerant>
+        <penaltyDuration>5 sec</penaltyDuration>
+        <properties>
+          <entry>
+            <key>File Size</key>
+            <value>0B</value>
+          </entry>
+          <entry>
+            <key>Batch Size</key>
+            <value>1</value>
+          </entry>
+          <entry>
+            <key>Data Format</key>
+            <value>Text</value>
+          </entry>
+          <entry>
+            <key>Unique FlowFiles</key>
+            <value>true</value>
+          </entry>
+          <entry>
+            <key>generate-ff-custom-text</key>
+          </entry>
+        </properties>
+        <runDurationMillis>0</runDurationMillis>
+        <schedulingPeriod>10 min</schedulingPeriod>
+        <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+        <yieldDuration>1 sec</yieldDuration>
+      </config>
+      <name>GenerateFlowFile</name>
+      <relationships>
+        <autoTerminate>false</autoTerminate>
+        <name>success</name>
+      </relationships>
+      <style></style>
+      <type>org.apache.nifi.processors.standard.GenerateFlowFile</type>
+    </processors>
+    <processors>
+      <id>3446ca32-c85d-3bd1-0000-000000000000</id>
+      <parentGroupId>a43fc589-b566-34bf-0000-000000000000</parentGroupId>
+      <position>
+        <x>734.3114892027961</x>
+        <y>195.38228758464675</y>
+      </position>
+      <bundle>
+        <artifact>nifi-standard-nar</artifact>
+        <group>org.apache.nifi</group>
+        <version>1.3.0</version>
+      </bundle>
+      <config>
+        <bulletinLevel>WARN</bulletinLevel>
+        <comments>json내용 중 필요한 부분만 쓰기위해 파싱하는 프로세서
+
+
+
+{
+"query": {
+"count": 4,
+"created": "2017-09-09T03:42:22Z",
+"lang": "ko-KR",
+"diagnostics": {},
+"results": {"rate": [{"id":.....
+
+전체를 "query"으로 감싸고 있기에 "query"키를 제거 하고 내용만 으로 파싱
+
+{
+"count": 4,
+"created": "2017-09-09T03:42:22Z",
+"lang": "ko-KR",
+"diagnostics": {},
+"results": {"rate": [{"id":.....
+ 
+
+미사용 Relationships 비활성화</comments>
+        <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+        <descriptors>
+          <entry>
+            <key>Destination</key>
+            <value>
+              <name>Destination</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Return Type</key>
+            <value>
+              <name>Return Type</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Path Not Found Behavior</key>
+            <value>
+              <name>Path Not Found Behavior</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Null Value Representation</key>
+            <value>
+              <name>Null Value Representation</name>
+            </value>
+          </entry>
+          <entry>
+            <key>query</key>
+            <value>
+              <name>query</name>
+            </value>
+          </entry>
+        </descriptors>
+        <executionNode>ALL</executionNode>
+        <lossTolerant>false</lossTolerant>
+        <penaltyDuration>30 sec</penaltyDuration>
+        <properties>
+          <entry>
+            <key>Destination</key>
+            <value>flowfile-content</value>
+          </entry>
+          <entry>
+            <key>Return Type</key>
+            <value>auto-detect</value>
+          </entry>
+          <entry>
+            <key>Path Not Found Behavior</key>
+            <value>ignore</value>
+          </entry>
+          <entry>
+            <key>Null Value Representation</key>
+            <value>empty string</value>
+          </entry>
+          <entry>
+            <key>query</key>
+            <value>$.query</value>
+          </entry>
+        </properties>
+        <runDurationMillis>0</runDurationMillis>
+        <schedulingPeriod>0 sec</schedulingPeriod>
+        <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+        <yieldDuration>1 sec</yieldDuration>
+      </config>
+      <name>EvaluateJsonPath</name>
+      <relationships>
+        <autoTerminate>true</autoTerminate>
+        <name>failure</name>
+      </relationships>
+      <relationships>
+        <autoTerminate>false</autoTerminate>
+        <name>matched</name>
+      </relationships>
+      <relationships>
+        <autoTerminate>true</autoTerminate>
+        <name>unmatched</name>
+      </relationships>
+      <style></style>
+      <type>org.apache.nifi.processors.standard.EvaluateJsonPath</type>
+    </processors>
+    <processors>
+      <id>5bde930f-d5c1-3673-0000-000000000000</id>
+      <parentGroupId>a43fc589-b566-34bf-0000-000000000000</parentGroupId>
+      <position>
+        <x>689.2023887634277</x>
+        <y>0.0</y>
+      </position>
+      <bundle>
+        <artifact>nifi-standard-nar</artifact>
+        <group>org.apache.nifi</group>
+        <version>1.3.0</version>
+      </bundle>
+      <config>
+        <bulletinLevel>WARN</bulletinLevel>
+        <comments>빈파일에 json파일을 덮어씌우는 프로세서
+
+야후 - 환율 데이터 API 호출(인증키 불필요, 형식:json)
+ - Remote URL - https://query.yahooapis.com...
+
+
+실험용예제이기에 Failure,No Retry 등 미사용 Relationships 비활성화</comments>
+        <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+        <descriptors>
+          <entry>
+            <key>HTTP Method</key>
+            <value>
+              <name>HTTP Method</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Remote URL</key>
+            <value>
+              <name>Remote URL</name>
+            </value>
+          </entry>
+          <entry>
+            <key>SSL Context Service</key>
+            <value>
+              <identifiesControllerService>org.apache.nifi.ssl.SSLContextService</identifiesControllerService>
+              <name>SSL Context Service</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Connection Timeout</key>
+            <value>
+              <name>Connection Timeout</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Read Timeout</key>
+            <value>
+              <name>Read Timeout</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Include Date Header</key>
+            <value>
+              <name>Include Date Header</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Follow Redirects</key>
+            <value>
+              <name>Follow Redirects</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Attributes to Send</key>
+            <value>
+              <name>Attributes to Send</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Basic Authentication Username</key>
+            <value>
+              <name>Basic Authentication Username</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Basic Authentication Password</key>
+            <value>
+              <name>Basic Authentication Password</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Proxy Host</key>
+            <value>
+              <name>Proxy Host</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Proxy Port</key>
+            <value>
+              <name>Proxy Port</name>
+            </value>
+          </entry>
+          <entry>
+            <key>invokehttp-proxy-user</key>
+            <value>
+              <name>invokehttp-proxy-user</name>
+            </value>
+          </entry>
+          <entry>
+            <key>invokehttp-proxy-password</key>
+            <value>
+              <name>invokehttp-proxy-password</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Put Response Body In Attribute</key>
+            <value>
+              <name>Put Response Body In Attribute</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Max Length To Put In Attribute</key>
+            <value>
+              <name>Max Length To Put In Attribute</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Digest Authentication</key>
+            <value>
+              <name>Digest Authentication</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Always Output Response</key>
+            <value>
+              <name>Always Output Response</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Trusted Hostname</key>
+            <value>
+              <name>Trusted Hostname</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Add Response Headers to Request</key>
+            <value>
+              <name>Add Response Headers to Request</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Content-Type</key>
+            <value>
+              <name>Content-Type</name>
+            </value>
+          </entry>
+          <entry>
+            <key>send-message-body</key>
+            <value>
+              <name>send-message-body</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Use Chunked Encoding</key>
+            <value>
+              <name>Use Chunked Encoding</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Penalize on "No Retry"</key>
+            <value>
+              <name>Penalize on "No Retry"</name>
+            </value>
+          </entry>
+        </descriptors>
+        <executionNode>ALL</executionNode>
+        <lossTolerant>false</lossTolerant>
+        <penaltyDuration>30 sec</penaltyDuration>
+        <properties>
+          <entry>
+            <key>HTTP Method</key>
+            <value>GET</value>
+          </entry>
+          <entry>
+            <key>Remote URL</key>
+            <value>https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.xchange%20where%20pair%20in%20(%22USDKRW%22,%22JPYKRW%22,%22EURKRW%22,%22CNYKRW%22)&amp;format=json&amp;diagnostics=true&amp;env=store://datatables.org/alltableswithkeys</value>
+          </entry>
+          <entry>
+            <key>SSL Context Service</key>
+          </entry>
+          <entry>
+            <key>Connection Timeout</key>
+            <value>5 secs</value>
+          </entry>
+          <entry>
+            <key>Read Timeout</key>
+            <value>15 secs</value>
+          </entry>
+          <entry>
+            <key>Include Date Header</key>
+            <value>True</value>
+          </entry>
+          <entry>
+            <key>Follow Redirects</key>
+            <value>True</value>
+          </entry>
+          <entry>
+            <key>Attributes to Send</key>
+          </entry>
+          <entry>
+            <key>Basic Authentication Username</key>
+          </entry>
+          <entry>
+            <key>Basic Authentication Password</key>
+          </entry>
+          <entry>
+            <key>Proxy Host</key>
+          </entry>
+          <entry>
+            <key>Proxy Port</key>
+          </entry>
+          <entry>
+            <key>invokehttp-proxy-user</key>
+          </entry>
+          <entry>
+            <key>invokehttp-proxy-password</key>
+          </entry>
+          <entry>
+            <key>Put Response Body In Attribute</key>
+          </entry>
+          <entry>
+            <key>Max Length To Put In Attribute</key>
+            <value>256</value>
+          </entry>
+          <entry>
+            <key>Digest Authentication</key>
+            <value>false</value>
+          </entry>
+          <entry>
+            <key>Always Output Response</key>
+            <value>false</value>
+          </entry>
+          <entry>
+            <key>Trusted Hostname</key>
+          </entry>
+          <entry>
+            <key>Add Response Headers to Request</key>
+            <value>false</value>
+          </entry>
+          <entry>
+            <key>Content-Type</key>
+            <value>${mime.type}</value>
+          </entry>
+          <entry>
+            <key>send-message-body</key>
+            <value>true</value>
+          </entry>
+          <entry>
+            <key>Use Chunked Encoding</key>
+            <value>false</value>
+          </entry>
+          <entry>
+            <key>Penalize on "No Retry"</key>
+            <value>false</value>
+          </entry>
+        </properties>
+        <runDurationMillis>0</runDurationMillis>
+        <schedulingPeriod>0 sec</schedulingPeriod>
+        <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+        <yieldDuration>1 sec</yieldDuration>
+      </config>
+      <name>InvokeHTTP</name>
+      <relationships>
+        <autoTerminate>true</autoTerminate>
+        <name>Failure</name>
+      </relationships>
+      <relationships>
+        <autoTerminate>true</autoTerminate>
+        <name>No Retry</name>
+      </relationships>
+      <relationships>
+        <autoTerminate>true</autoTerminate>
+        <name>Original</name>
+      </relationships>
+      <relationships>
+        <autoTerminate>false</autoTerminate>
+        <name>Response</name>
+      </relationships>
+      <relationships>
+        <autoTerminate>false</autoTerminate>
+        <name>Retry</name>
+      </relationships>
+      <style></style>
+      <type>org.apache.nifi.processors.standard.InvokeHTTP</type>
+    </processors>
+  </snippet>
+  <timestamp>09/09/2017 19:10:34 KST</timestamp>
+</template>
