@@ -14,7 +14,7 @@ import org.apache.hadoop.fs.FSDataOutputStream;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 /**
- * Could not locate executable null\bin\winutils.exe 에러 시. 
+ * add comment  Could not locate executable null\bin\winutils.exe 에러 시. 
  * https://stackoverflow.com/questions/35652665/java-io-ioexception-could-not-locate-executable-null-bin-winutils-exe-in-the-ha
  * 
  * 
